@@ -1,0 +1,179 @@
+---
+import { Terminal, Shield, Download } from 'lucide-react';
+
+const herramientas = [
+  {
+    nombre: "Nmap",
+    descripcion: "Escáner de redes para descubrir hosts y servicios activos en una red.",
+    url: "https://nmap.org/download.html",
+    icon: "Terminal",
+    comandos: [
+      {
+        comando: "nmap -sS -sV -O 192.168.1.1",
+        descripcion: "Realiza un escaneo SYN stealth para identificar servicios y sistemas operativos."
+      },
+      {
+        comando: "nmap -A example.com",
+        descripcion: "Habilita la detección avanzada de servicios, versiones, scripts y sistemas operativos."
+      },
+      {
+        comando: "nmap -p 80,443,8080 example.com",
+        descripcion: "Escanea específicamente los puertos 80, 443 y 8080 en el dominio example.com."
+      },
+      {
+        comando: "nmap -sU -p 53 example.com",
+        descripcion: "Realiza un escaneo de puertos UDP en el puerto 53 (DNS)."
+      },
+      {
+        comando: "nmap --script=vuln example.com",
+        descripcion: "Ejecuta scripts de Nmap para detectar vulnerabilidades conocidas en el objetivo."
+      }
+    ]
+  },
+  {
+    nombre: "Nessus",
+    descripcion: "Escáner de vulnerabilidades para identificar puntos débiles en sistemas.",
+    url: "https://www.tenable.com/products/nessus/nessus-professional",
+    icon: "Shield"
+  },
+  {
+    nombre: "Wireshark",
+    descripcion: "Analizador de protocolos de red para capturar y examinar datos.",
+    url: "https://www.wireshark.org/download.html",
+    icon: "Terminal"
+  }
+];
+
+const videoURL = "https://www.youtube.com/embed/dQw4w9WgXcQ";
+---
+  <section class="min-h-screen py-20">
+    <div class="container mx-auto px-4">
+      <!-- Header Section -->
+      <div class="max-w-4xl mx-auto text-center mb-16">
+        <h1 class="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-orange-600 dark:from-red-400 dark:to-orange-400 mb-6">
+          Fase 2: Scanning (Escaneo)
+        </h1>
+        <p class="text-xl text-gray-700 dark:text-gray-300 leading-relaxed">
+          Durante la fase de escaneo, se identifican los sistemas y servicios activos en el objetivo, 
+          descubriendo posibles vulnerabilidades que permiten planificar ataques más efectivos.
+        </p>
+      </div>
+
+      <!-- Tools Section -->
+      <div class="mb-20">
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-10 text-center">
+          Herramientas de Scanning
+        </h2>
+        <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {herramientas.map((herramienta) => (
+            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 dark:border-gray-700">
+              <div class="p-6">
+                <div class="flex items-center gap-4 mb-4">
+                  <div class="p-3 bg-red-100 dark:bg-red-900/30 rounded-lg">
+                    {herramienta.icon === "Terminal" ? 
+                      <Terminal class:list="w-6 h-6 text-red-600 dark:text-red-400" /> :
+                      <Shield class:list="w-6 h-6 text-red-600 dark:text-red-400" />
+                    }
+                  </div>
+                  <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100">
+                    {herramienta.nombre}
+                  </h3>
+                </div>
+                <p class="text-gray-600 dark:text-gray-400 mb-4">
+                  {herramienta.descripcion}
+                </p>
+                {herramienta.comandos && (
+                  <div class="mt-4 space-y-4">
+                    <h4 class="font-semibold text-gray-900 dark:text-gray-100">
+                      Comandos Principales:
+                    </h4>
+                    <div class="space-y-3">
+                      {herramienta.comandos.map((cmd) => (
+                        <div class="bg-gray-50 dark:bg-gray-900/50 rounded-lg p-4">
+                          <code class="text-sm text-red-600 dark:text-red-400 font-mono block mb-2">
+                            {cmd.comando}
+                          </code>
+                          <p class="text-sm text-gray-600 dark:text-gray-400">
+                            {cmd.descripcion}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                <a
+                  href={herramienta.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 mt-6 text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 transition-colors"
+                >
+                  <Download class:list="w-4 h-4" />
+                  <span>Descargar Herramienta</span>
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Prevention Section -->
+      <div class="max-w-4xl mx-auto mb-20">
+        <h2 class="text-3xl font-bold text-red-600 dark:text-red-400 mb-8 text-center">
+          Medidas de Prevención
+        </h2>
+        <div class="grid gap-6 md:grid-cols-2">
+          <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700">
+            <h3 class="flex items-center gap-3 text-lg font-semibold mb-4">
+              <Shield class:list="w-5 h-5 text-red-600 dark:text-red-400" />
+              Configuración de Firewalls
+            </h3>
+            <p class="text-gray-600 dark:text-gray-400">
+              Bloquea puertos y servicios innecesarios para limitar la exposición.
+            </p>
+          </div>
+          <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700">
+            <h3 class="flex items-center gap-3 text-lg font-semibold mb-4">
+              <Shield class:list="w-5 h-5 text-red-600 dark:text-red-400" />
+              Segmentación de Redes
+            </h3>
+            <p class="text-gray-600 dark:text-gray-400">
+              Divide tu red en segmentos más pequeños para limitar accesos no autorizados.
+            </p>
+          </div>
+          <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700">
+            <h3 class="flex items-center gap-3 text-lg font-semibold mb-4">
+              <Shield class:list="w-5 h-5 text-red-600 dark:text-red-400" />
+              Monitorización de Tráfico
+            </h3>
+            <p class="text-gray-600 dark:text-gray-400">
+              Usa sistemas IDS para detectar actividades sospechosas en tiempo real.
+            </p>
+          </div>
+          <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700">
+            <h3 class="flex items-center gap-3 text-lg font-semibold mb-4">
+              <Shield class:list="w-5 h-5 text-red-600 dark:text-red-400" />
+              Actualización y Parches
+            </h3>
+            <p class="text-gray-600 dark:text-gray-400">
+              Asegúrate de que todo el software esté actualizado para evitar vulnerabilidades conocidas.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Video Section -->
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-8 text-center">
+          Video Explicativo
+        </h2>
+        <div class="relative w-full aspect-video rounded-xl overflow-hidden shadow-lg">
+          <iframe
+            src={videoURL}
+            class="absolute inset-0 w-full h-full"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>

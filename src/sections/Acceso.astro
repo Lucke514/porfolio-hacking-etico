@@ -1,0 +1,244 @@
+---
+import { Sword, Shield, ExternalLink, Terminal, AlertTriangle, PlayCircle, Code, Database, Bug } from 'lucide-react';
+
+const herramientas = [
+    {
+        nombre: "Metasploit",
+        descripcion: "Framework para desarrollar y ejecutar exploits contra una máquina remota.",
+        url: "https://www.metasploit.com/download",
+        icon: "Sword",
+        categoria: "Explotación"
+    },
+    {
+        nombre: "Hydra",
+        descripcion: "Herramienta para realizar ataques de fuerza bruta a servicios de red.",
+        url: "https://github.com/vanhauser-thc/thc-hydra",
+        icon: "Terminal",
+        categoria: "Fuerza Bruta"
+    },
+    {
+        nombre: "Burp Suite",
+        descripcion: "Plataforma integrada para realizar pruebas de seguridad de aplicaciones web.",
+        url: "https://portswigger.net/burp/releases",
+        icon: "Bug",
+        categoria: "Web Testing"
+    }
+];
+
+const tiposAtaque = [
+    {
+        nombre: "Cross-Site Scripting (XSS)",
+        descripcion: "XSS permite a atacantes inyectar scripts maliciosos en páginas web, robando información o ejecutando acciones no autorizadas.",
+        icon: "Code",
+        subtipos: [
+            {
+                nombre: "Reflejado",
+                descripcion: "El script malicioso se refleja en la respuesta del servidor."
+            },
+            {
+                nombre: "Almacenado",
+                descripcion: "El script permanece almacenado en el servidor y afecta a múltiples usuarios."
+            },
+            {
+                nombre: "DOM-based",
+                descripcion: "La manipulación ocurre directamente en el navegador sin interacción con el servidor."
+            }
+        ]
+    },
+    {
+        nombre: "SQL Injection",
+        descripcion: "Permite a los atacantes manipular consultas SQL, obteniendo acceso no autorizado a bases de datos o alterando datos.",
+        icon: "Database",
+        subtipos: [
+            {
+                nombre: "Inyección Ciega",
+                descripcion: "Respuestas indirectas revelan información sensible."
+            },
+            {
+                nombre: "Basada en Errores",
+                descripcion: "Explota mensajes de error para entender la estructura de la base de datos."
+            },
+            {
+                nombre: "Union-based",
+                descripcion: "Combina múltiples consultas para acceder a datos adicionales."
+            }
+        ]
+    }
+];
+
+const medidasPrevencion = [
+    {
+        tipo: "XSS",
+        medidas: "Usa validación y sanitización de entradas, políticas CSP y funciones de escapado."
+    },
+    {
+        tipo: "SQL Injection",
+        medidas: "Implementa consultas preparadas, validaciones estrictas y ORM para manejar datos."
+    }
+];
+
+const videoURLs = [
+    "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "https://www.youtube.com/embed/dQw4w9WgXcQ"
+];
+---
+
+
+<section class="min-h-screen py-20">
+    <div class="container mx-auto px-4">
+        <!-- Header Section with Animated Background -->
+        <div class="relative max-w-4xl mx-auto text-center mb-16 p-8 rounded-2xl ">
+            <div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
+            <h1 class="relative text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-orange-600 dark:from-red-400 dark:to-orange-400 mb-6">
+                Fase 3: Acceso
+            </h1>
+            <p class="relative text-xl text-gray-700 dark:text-gray-300 leading-relaxed">
+                La fase de acceso busca obtener control sobre el sistema objetivo, explotando vulnerabilidades descubiertas en etapas previas. Este control puede ser persistente o temporal y permite ejecutar acciones avanzadas.
+            </p>
+        </div>
+
+        <!-- Herramientas de Acceso -->
+        <div class="mb-20">
+            <div class="flex items-center justify-center gap-4 mb-10">
+                <Sword class:list="w-8 h-8 text-red-600 dark:text-red-400" />
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 text-center">
+                    Herramientas de Acceso
+                </h2>
+            </div>
+            <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                {herramientas.map((herramienta) => (
+                    <div class="group bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 dark:border-gray-700">
+                        <div class="p-6">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="p-3 bg-red-100 dark:bg-red-900/30 rounded-lg group-hover:bg-red-200 dark:group-hover:bg-red-800/40 transition-colors">
+                                    {herramienta.icon === "Sword" ? (
+                                        <Sword class:list="w-6 h-6 text-red-600 dark:text-red-400" />
+                                    ) : herramienta.icon === "Terminal" ? (
+                                        <Terminal class:list="w-6 h-6 text-red-600 dark:text-red-400" />
+                                    ) : (
+                                        <Bug class:list="w-6 h-6 text-red-600 dark:text-red-400" />
+                                    )}
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100">
+                                        {herramienta.nombre}
+                                    </h3>
+                                    <span class="text-sm text-red-600 dark:text-red-400">
+                                        {herramienta.categoria}
+                                    </span>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4">
+                                {herramienta.descripcion}
+                            </p>
+                            <a
+                                href={herramienta.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="inline-flex items-center gap-2 text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 transition-colors"
+                            >
+                                <ExternalLink class:list="w-4 h-4" />
+                                <span>Descargar</span>
+                            </a>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+
+        <!-- Tipos de Ataques -->
+        <div class="mb-20">
+            <div class="flex items-center justify-center gap-4 mb-10">
+                <AlertTriangle class:list="w-8 h-8 text-orange-600 dark:text-orange-400" />
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 text-center">
+                    Tipos de Ataques
+                </h2>
+            </div>
+            <div class="grid gap-8 lg:grid-cols-2">
+                {tiposAtaque.map((ataque) => (
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 border border-gray-100 dark:border-gray-700">
+                        <div class="flex items-center gap-4 mb-6">
+                            {ataque.icon === "Code" ? (
+                                <Code class:list="w-6 h-6 text-orange-600 dark:text-orange-400" />
+                            ) : (
+                                <Database class:list="w-6 h-6 text-orange-600 dark:text-orange-400" />
+                            )}
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100">
+                                {ataque.nombre}
+                            </h3>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400 mb-6">
+                            {ataque.descripcion}
+                        </p>
+                        <div class="space-y-4">
+                            {ataque.subtipos.map((subtipo) => (
+                                <div class="bg-gray-50 dark:bg-gray-900/50 p-4 rounded-lg">
+                                    <h4 class="font-semibold text-orange-600 dark:text-orange-400 mb-2">
+                                        {subtipo.nombre}
+                                    </h4>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">
+                                        {subtipo.descripcion}
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+
+        <!-- Medidas de Prevención -->
+        <div class="max-w-4xl mx-auto mb-20">
+            <div class="flex items-center justify-center gap-4 mb-10">
+                <Shield class:list="w-8 h-8 text-green-600 dark:text-green-400" />
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 text-center">
+                    Medidas de Prevención
+                </h2>
+            </div>
+            <div class="grid gap-6 md:grid-cols-2">
+                {medidasPrevencion.map((medida) => (
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all duration-300">
+                        <h3 class="flex items-center gap-3 text-lg font-semibold mb-4 text-green-600 dark:text-green-400">
+                            <Shield class:list="w-5 h-5" />
+                            Prevención contra {medida.tipo}
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-400">
+                            {medida.medidas}
+                        </p>
+                    </div>
+                ))}
+            </div>
+        </div>
+
+        <!-- Videos -->
+        <div class="max-w-5xl mx-auto">
+            <div class="flex items-center justify-center gap-4 mb-10">
+                <PlayCircle class:list="w-8 h-8 text-gray-900 dark:text-gray-100" />
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 text-center">
+                    Videos Explicativos
+                </h2>
+            </div>
+            <div class="grid gap-8 md:grid-cols-2">
+                {videoURLs.map((url, index) => (
+                    <div class="relative aspect-video rounded-xl overflow-hidden shadow-xl">
+                        <iframe
+                            src={url}
+                            title={`Video sobre Acceso ${index + 1}`}
+                            class="absolute inset-0 w-full h-full"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen
+                        ></iframe>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<style>
+    .bg-grid-pattern {
+        background-image: radial-gradient(circle, #DC2626 1px, transparent 1px);
+        background-size: 20px 20px;
+    }
+</style>

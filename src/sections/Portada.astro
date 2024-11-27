@@ -1,25 +1,46 @@
 ---
-// Fecha y hora actual
 const fecha = new Date();
 const hora = fecha.getHours();
 const saludo = hora < 12 ? 'Buenos días' : hora < 19 ? 'Buenas tardes' : 'Buenas noches';
 ---
-<section class="h-[100vh] mt-28 flex flex-col justify-center items-center px-10">
-    <div class="flex flex-col items-center justify-center">
-        <h1 class="text-4xl font-bold text-center">¡Hola! Somos <span class="text-red-400">Lucas Gonzalez</span> y <span class="text-blue-400">Cesar Diaz</span></h1>
-        <p class="text-lg text-center">Estudiantes de Ingeniería Informática en el instituto profesional Santo Tomas Ovalle</p>
-        <p class="text-lg text-center">Docente a cargo : <span class="text-orange-300">Marco Vega</span> - <span class="text-green-600">mvega@santotomas.cl</span></p>
-        <p class="text-lg text-center">¡Bienvenido a nuestro porfolio web hacking ético 2024!</p>
-        <p class="text-lg text-center">{saludo}</p>
+<section class="min-h-screen mt-20 flex flex-col justify-center items-center px-6">
+    <div class="text-center max-w-2xl">
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-4 text-gray-900 dark:text-white">
+            ¡Hola! Somos <span class="text-red-500 dark:text-red-400">Lucas Gonzalez</span> y <span class="text-blue-500 dark:text-blue-400">Cesar Diaz</span>
+        </h1>
+        <p class="text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-2">
+            Estudiantes de Ingeniería Informática en el Instituto Profesional Santo Tomás Ovalle
+        </p>
+        <p class="text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-4">
+            Docente a cargo: <span class="text-orange-400 dark:text-orange-300">Marco Vega</span> - <a href="mailto:mvega@santotomas.cl" class="text-green-600 dark:text-green-400 underline">mvega@santotomas.cl</a>
+        </p>
+        <p class="text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-4">
+            ¡Bienvenido a nuestro portafolio web de hacking ético 2024!
+        </p>
+        <p class="text-lg md:text-xl text-indigo-600 dark:text-indigo-400 font-medium">
+            {saludo}
+        </p>
     </div>
-    <div class="flex flex-col md:flex-row my-10 gap-10 md:gap-0 justify-between w-full max-w-3xl mt-10">
-        <article class="flex flex-col justify-center">
-            <img src="/img/Avatar.webp" alt="Portada" class="h-40 w-40 mx-auto rounded-full mb-5" loading="lazy" />
-            <p class="text-center">l.gonzalez103@alumnos.santotomas.cl</p>
+    
+    <div class="flex flex-col md:flex-row my-10 gap-8 justify-center w-full max-w-4xl">
+        <!-- Tarjeta de Lucas Gonzalez -->
+        <article class="bg-white dark:bg-gray-800 shadow-lg dark:shadow-gray-700 rounded-lg p-6 flex flex-col items-center transform transition-transform duration-300 hover:scale-105">
+            <img src="/img/Avatar.webp" alt="Avatar de Lucas Gonzalez" class="h-40 w-40 rounded-full mb-4 border-4 border-red-500 dark:border-red-400" loading="lazy" />
+            <p class="text-center text-gray-800 dark:text-gray-200 font-semibold">Lucas Gonzalez</p>
+            <a href="mailto:l.gonzalez103@alumnos.santotomas.cl" class="text-blue-500 dark:text-blue-400 hover:underline">l.gonzalez103@alumnos.santotomas.cl</a>
+            <blockquote class="mt-4 italic text-gray-600 dark:text-gray-400 text-center">
+                "Domino las sombras del ciberespacio para proteger lo que más importa."
+            </blockquote>
         </article>
-        <article class="flex flex-col justify-center">
-            <img src="/img/Avatar-cesar.webp" alt="Portada" class="h-40 w-40 mx-auto rounded-full mb-5" loading="lazy" />
-            <p class="text-center">c.diaz250@alumnos.santotomas.cl</p>
+        
+        <!-- Tarjeta de Cesar Diaz -->
+        <article class="bg-white dark:bg-gray-800 shadow-lg dark:shadow-gray-700 rounded-lg p-6 flex flex-col items-center transform transition-transform duration-300 hover:scale-105">
+            <img src="/img/Avatar-cesar.webp" alt="Avatar de Cesar Diaz" class="h-40 w-40 rounded-full mb-4 border-4 border-blue-500 dark:border-blue-400" loading="lazy" />
+            <p class="text-center text-gray-800 dark:text-gray-200 font-semibold">Cesar Diaz</p>
+            <a href="mailto:c.diaz250@alumnos.santotomas.cl" class="text-blue-500 dark:text-blue-400 hover:underline">c.diaz250@alumnos.santotomas.cl</a>
+            <blockquote class="mt-4 italic text-gray-600 dark:text-gray-400 text-center">
+                "Mi conocimiento en hacking ético es simplemente imparable."
+            </blockquote>
         </article>
     </div>
 </section>
