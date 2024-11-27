@@ -1,0 +1,25 @@
+---
+// Fecha y hora actual
+const fecha = new Date();
+const hora = fecha.getHours();
+const saludo = hora < 12 ? 'Buenos días' : hora < 19 ? 'Buenas tardes' : 'Buenas noches';
+---
+<section class="h-[100vh] mt-28 flex flex-col justify-center items-center px-10">
+    <div class="flex flex-col items-center justify-center">
+        <h1 class="text-4xl font-bold text-center">¡Hola! Somos <span class="text-red-400">Lucas Gonzalez</span> y <span class="text-blue-400">Cesar Diaz</span></h1>
+        <p class="text-lg text-center">Estudiantes de Ingeniería Informática en el instituto profesional Santo Tomas Ovalle</p>
+        <p class="text-lg text-center">Docente a cargo : <span class="text-orange-300">Marco Vega</span> - <span class="text-green-600">mvega@santotomas.cl</span></p>
+        <p class="text-lg text-center">¡Bienvenido a nuestro porfolio web hacking ético 2024!</p>
+        <p class="text-lg text-center">{saludo}</p>
+    </div>
+    <div class="flex flex-col md:flex-row my-10 gap-10 md:gap-0 justify-between w-full max-w-3xl mt-10">
+        <article class="flex flex-col justify-center">
+            <img src="/img/Avatar.webp" alt="Portada" class="h-40 w-40 mx-auto rounded-full mb-5" loading="lazy" />
+            <p class="text-center">l.gonzalez103@alumnos.santotomas.cl</p>
+        </article>
+        <article class="flex flex-col justify-center">
+            <img src="/img/Avatar-cesar.webp" alt="Portada" class="h-40 w-40 mx-auto rounded-full mb-5" loading="lazy" />
+            <p class="text-center">c.diaz250@alumnos.santotomas.cl</p>
+        </article>
+    </div>
+</section>
