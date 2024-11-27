@@ -3,9 +3,20 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "astro/*": ["./src/astro/*"],
-      "components/*": ["./src/components/*"],
-      "shared/*": ["./src/shared/*"]
-    }
+      "@/*": [
+        "./src/*"
+      ],
+      "astro/*": [
+        "./src/astro/*"
+      ],
+      "components/*": [
+        "./src/components/*"
+      ],
+      "shared/*": [
+        "./src/shared/*"
+      ]
+    },
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
   }
 }

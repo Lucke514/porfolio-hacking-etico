@@ -1,115 +1,75 @@
 ---
-const videoURL = "https://www.youtube.com/embed/dQw4w9WgXcQ";
+import '@/styles/globals.css';
+import Layout from '../layouts/Layout.astro';
+import { FileText, Shield, Eye } from 'lucide-react';
+import { MonitoringToolCard } from '@/components/cover-tracks/MonitoringToolCard';
+import { PreventionMethodCard } from '@/components/cover-tracks/PreventionMethodCard';
+import { AnonymityMethodsCard } from '@/components/cover-tracks/AnonymityMethodsCard';
+import { monitoringTools, preventionMethods, anonymityMethods, videoURL } from '@/components/cover-tracks/data';
 ---
-
-<section class="min-h-screen mt-20 flex flex-col justify-center items-center p-6 md:p-10 bg-gradient-to-r from-blue-50 via-white to-blue-100 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800 rounded-xl shadow-lg transition-all duration-500 w-full">
-    <!-- Título y Descripción -->
-    <div class="text-center max-w-3xl mb-12">
-        <h2 class="text-4xl md:text-5xl font-bold text-blue-600 dark:text-blue-400 mb-6">
-            Fase 5: Borrar Huellas
-        </h2>
-        <p class="text-lg md:text-xl text-gray-700 dark:text-gray-300">
-            Esta fase consiste en eliminar cualquier rastro de actividades en el sistema objetivo, incluyendo registros, archivos temporales y metadatos. Esto dificulta la detección y asegura que futuras operaciones puedan ejecutarse sin levantar sospechas.
-        </p>
-    </div>
-
-    <!-- Herramientas de Monitoreo y Registro -->
-    <div class="w-full max-w-5xl mb-12">
-        <h3 class="text-2xl md:text-3xl font-semibold text-gray-800 dark:text-gray-200 mb-6">
-            Herramientas de Monitoreo y Registro
-        </h3>
-
-        <!-- Visor de Eventos de Windows -->
-        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-6 hover:shadow-lg transition-shadow duration-300">
-            <h4 class="text-xl font-semibold text-blue-600 dark:text-blue-400 mb-3">Visor de Eventos de Windows</h4>
-            <p class="text-gray-600 dark:text-gray-400 mb-4">
-                Herramienta integrada que permite monitorear eventos del sistema, aplicaciones y seguridad en Windows. Registra actividades críticas para el análisis y solución de problemas.
-            </p>
-            <p class="font-semibold text-gray-700 dark:text-gray-300">Características:</p>
-            <ul class="list-disc list-inside space-y-2 text-gray-600 dark:text-gray-400 mb-4">
-                <li>Registro detallado de eventos del sistema, seguridad y aplicaciones.</li>
-                <li>Filtrado y búsqueda de eventos específicos.</li>
-                <li>Monitoreo en tiempo real.</li>
-            </ul>
-            <p class="font-semibold text-gray-700 dark:text-gray-300">Información Almacenada:</p>
-            <ul class="list-disc list-inside space-y-2 text-gray-600 dark:text-gray-400">
-                <li>Errores y advertencias del sistema.</li>
-                <li>Intentos de inicio de sesión y cambios de configuración.</li>
-                <li>Actividades específicas de aplicaciones y servicios.</li>
-            </ul>
+<section class="min-h-screen py-20">
+    <div class="container mx-auto px-4">
+        <!-- Header Section -->
+        <div class="relative max-w-4xl mx-auto text-center mb-16">
+            <div class="absolute inset-0 bg-gradient-to-r from-blue-200 to-cyan-200 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-3xl blur-3xl opacity-30"></div>
+            <div class="relative">
+                <h1 class="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-cyan-600 dark:from-blue-400 dark:to-cyan-400 mb-6">
+                    Fase 5: Borrar Huellas
+                </h1>
+                <p class="text-xl text-gray-700 dark:text-gray-300 leading-relaxed">
+                    Esta fase consiste en eliminar cualquier rastro de actividades en el sistema objetivo, incluyendo registros, archivos temporales y metadatos. Esto dificulta la detección y asegura que futuras operaciones puedan ejecutarse sin levantar sospechas.
+                </p>
+            </div>
         </div>
 
-        <!-- Logs de Linux -->
-        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-            <h4 class="text-xl font-semibold text-blue-600 dark:text-blue-400 mb-3">Logs de Linux</h4>
-            <p class="text-gray-600 dark:text-gray-400 mb-4">
-                Los logs en Linux registran eventos del sistema, aplicaciones y servicios en <code>/var/log/</code>. Son fundamentales para monitorear actividades y resolver problemas.
-            </p>
-            <p class="font-semibold text-gray-700 dark:text-gray-300">Características:</p>
-            <ul class="list-disc list-inside space-y-2 text-gray-600 dark:text-gray-400 mb-4">
-                <li>Registro de eventos del sistema y servicios.</li>
-                <li>Rotación automática de logs para controlar espacio y retención.</li>
-                <li>Compatibilidad con herramientas avanzadas de análisis.</li>
-            </ul>
-            <p class="font-semibold text-gray-700 dark:text-gray-300">Información Almacenada:</p>
-            <ul class="list-disc list-inside space-y-2 text-gray-600 dark:text-gray-400">
-                <li>Eventos de inicio y apagado del sistema.</li>
-                <li>Intentos de autenticación y actividad de usuarios.</li>
-                <li>Mensajes de errores de aplicaciones y servicios.</li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- Prevención del Borrado de Logs y Navegación Anónima -->
-    <div class="w-full max-w-5xl mb-12">
-        <h3 class="text-2xl md:text-3xl font-semibold text-gray-800 dark:text-gray-200 mb-6">
-            Prevención del Borrado de Logs y Navegación Anónima
-        </h3>
-
-        <!-- Prevención del Borrado de Logs -->
-        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-6 hover:shadow-lg transition-shadow duration-300">
-            <h4 class="text-xl font-semibold text-blue-600 dark:text-blue-400 mb-3">Prevención del Borrado de Logs</h4>
-            <p class="text-gray-600 dark:text-gray-400 mb-4">
-                Para asegurar la integridad de los registros, se pueden implementar técnicas como:
-            </p>
-            <ul class="list-disc list-inside space-y-2 text-gray-600 dark:text-gray-400">
-                <li><strong>Restricciones de Permisos:</strong> Limitar acceso a los logs solo a usuarios autorizados.</li>
-                <li><strong>Logs Remotos:</strong> Enviar registros a servidores remotos para prevenir alteraciones locales.</li>
-                <li><strong>Integridad de Logs:</strong> Usar firmas digitales o hashing para detectar modificaciones.</li>
-                <li><strong>Auditorías Regulares:</strong> Revisar los logs periódicamente para identificar intentos de manipulación.</li>
-            </ul>
+        <!-- Monitoring Tools Section -->
+        <div class="max-w-7xl mx-auto mb-20">
+            <div class="flex items-center justify-center gap-4 mb-10">
+                <FileText class:list="w-8 h-8 text-blue-600 dark:text-blue-400" />
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100">
+                    Herramientas de Monitoreo y Registro
+                </h2>
+            </div>
+            <div class="grid gap-8 lg:grid-cols-2">
+                {monitoringTools.map((tool) => (
+                    <MonitoringToolCard tool={tool} />
+                ))}
+            </div>
         </div>
 
-        <!-- Navegación Anónima -->
-        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-            <h4 class="text-xl font-semibold text-blue-600 dark:text-blue-400 mb-3">Navegación Anónima</h4>
-            <p class="text-gray-600 dark:text-gray-400 mb-4">
-                Técnicas para ocultar la identidad en línea, relevantes para privacidad y actividades maliciosas.
-            </p>
-            <p class="font-semibold text-gray-700 dark:text-gray-300">Métodos Comunes:</p>
-            <ul class="list-disc list-inside space-y-2 text-gray-600 dark:text-gray-400">
-                <li><strong>VPN:</strong> Ocultan la dirección IP enrutando el tráfico a través de servidores intermediarios.</li>
-                <li><strong>Tor:</strong> Red de nodos encriptados para anonimizar el tráfico.</li>
-                <li><strong>Navegadores Anónimos:</strong> Diseñados para maximizar privacidad, como Tor Browser.</li>
-                <li><strong>Proxies:</strong> Intermedian entre el usuario y sitios web, ocultando la IP original.</li>
-            </ul>
+        <!-- Prevention Methods Section -->
+        <div class="max-w-7xl mx-auto mb-20">
+            <div class="flex items-center justify-center gap-4 mb-10">
+                <Shield class:list="w-8 h-8 text-blue-600 dark:text-blue-400" />
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100">
+                    Prevención y Seguridad
+                </h2>
+            </div>
+            <div class="grid gap-8 lg:grid-cols-2">
+                {preventionMethods.map((method) => (
+                    <PreventionMethodCard method={method} />
+                ))}
+                <AnonymityMethodsCard methods={anonymityMethods} />
+            </div>
         </div>
-    </div>
 
-    <!-- Video Explicativo -->
-    <div class="w-full max-w-5xl">
-        <h3 class="text-2xl md:text-3xl font-semibold text-gray-800 dark:text-gray-200 mb-6">
-            Video Explicativo sobre Visor de Eventos de Windows
-        </h3>
-        <div class="relative w-full h-0 pb-[56.25%]">
-            <iframe 
-                src={videoURL} 
-                title="Video sobre Visor de Eventos de Windows en Hacking Ético" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen
-                class="absolute top-0 left-0 w-full h-full rounded-lg shadow-lg dark:shadow-gray-700"
-            ></iframe>
+        <!-- Video Section -->
+        <div class="max-w-4xl mx-auto">
+            <div class="flex items-center justify-center gap-4 mb-10">
+                <Eye class:list="w-8 h-8 text-blue-600 dark:text-blue-400" />
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100">
+                    Video Explicativo
+                </h2>
+            </div>
+            <div class="relative aspect-video rounded-xl overflow-hidden shadow-xl">
+                <iframe
+                    src={videoURL}
+                    title="Video sobre Visor de Eventos de Windows en Hacking Ético"
+                    class="absolute inset-0 w-full h-full"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                ></iframe>
+            </div>
         </div>
     </div>
 </section>
